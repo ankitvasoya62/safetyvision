@@ -1,0 +1,54 @@
+*{margin:0; padding:0;}
+ul{list-style: none;}
+@font-face {font-family: "DINReg";src: url(../font/DINL____.TTF) format("truetype");}
+@font-face {font-family: "DINBold";src: url(../font/DINB____.TTF) format("truetype");}
+body{width:1000px; margin: 0 auto; font-family: "DINReg"; font-size:14px; color:#333;}
+
+#dreamwall{width:100%;}
+#dreamwall #left_box{width:50%; float: left;}
+#dreamwall #right_box{width:50%; float: right;}
+#dreamwall #right_box #fourth h1{color:#000; font-size: 42px;}
+
+#dreamwall .up{width:100%;height: 350px;}
+
+#dreamwall .up div.title{padding:20px;color:#26CFFF;font-size:72px;font-family: "DINBold"; font-weight: bold;}
+
+#dreamwall .down{width:100%;height: 350px;}
+
+#dreamwall li .image_box{padding:5px;height:70px;}
+#dreamwall li .image_box .images{width:110px;float:left;height:70px;}
+
+#dreamwall li .image_box .text_list{width:380px;float:right; height:70px;}
+#dreamwall li .image_box .text_list p.title{color:#000; font-weight: bold;}
+
+#dreamwall .down ul.finn_bar li.last{margin-right:0px;}
+#dreamwall li.hidden{color:#ccc;}
+#dreamwall li.hidden .image_box .text_list p.title{color:#999;}
+
+#dreamwall .down .side h1,h3,h5{padding:5px 5px 5px 0;}
+#dreamwall .down .side h3{font-size: 18px; font-weight: bold; padding:0 0 10px 0;}
+#dreamwall .down .side h5{color:#333;}
+#dreamwall .down .side p{line-height:180%;}
+#dreamwall .down .side p.last{margin-bottom:5px;}
+#dreamwall .down .side hr.long{width:90%;color: #000;}
+#dreamwall .down .side hr.short{width:70%;color: #333;}
+#dreamwall .down .side p.title{color:#26CFFF; padding:10px 0; font-size: 18px; font-weight: bold;}
+#dreamwall #image_button{width:100%;}
+
+#dreamwall #image_button #progress_bar{width:480px;}
+#dreamwall #image_button #progress_bar ul{height:1px; line-height: 1px;background: #000;}
+#dreamwall #image_button #progress_bar ul li{float: left;width:120px;height: 2px; line-height: 2px;}
+
+#dreamwall #image_button #progress_bar ul li.active{background:#26CFFF;}
+
+#dreamwall #image_button #progress_text{margin-top: 10px;}
+#dreamwall #image_button #progress_text ul{width:100%;}
+#dreamwall #image_button #progress_text ul li{float:left; padding:0 10px;margin:0 auto; background:url('../images/dot.png') right center no-repeat;color:#000; font-weight: bold;}
+#dreamwall #image_button #progress_text ul li.active{color:#ccc;}
+#dreamwall #image_button #progress_text ul li:first-child{padding-left: 0;}
+#dreamwall #image_button #progress_text ul li:last-child{background:none;}
+
+
+#footer {width:100%; height:60px; line-height: 60px; background: #002776; margin-top: 10px;}
+#footer .logo{width:100%; height: 60px; line-height: 60px; background: url('../images/em1.jpg') right top no-repeat;}
+

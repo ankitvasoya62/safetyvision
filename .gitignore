@@ -1,0 +1,6 @@
+/nbproject/
+/application/protected/runtime/
+/application/assets/*
+/application/upload/*
+/application/download/*
+/application/pma/*

@@ -1,0 +1,157 @@
+/*//////////////////////////////User Create//////////////////////////////////*/
+table.table-user thead{
+    background: none repeat scroll 0 0 #dadfe3;
+}
+table.table-user .isout{ width:100px; text-align:center; }
+table.table-user .yes{background:url(/images/publish_v.gif) no-repeat center center;}
+table.table-user .no{background:url(/images/publish_x.gif) no-repeat center center;}
+
+table.user_info{
+    background: #f0f1f2;
+    border: 1px solid #ccc;
+}
+table.user_info thead th{
+    text-align: center;
+    background: #e0e2e1;
+}
+table.user_info tbody th{
+    width: 160px;
+    text-align: center;
+}
+table.user_info tbody td{
+    padding: 3px;
+}
+table.user_info tbody td input,table.user_info tbody td select{
+    width: 220px;
+    display: inline-block;
+}
+table.user_info tbody td span.user_info_customer{
+    height: 34px;
+    line-height: 24px;
+    padding-left: 3px;
+}
+table.user_role tbody tr td input, table.user_role tbody tr td select{
+    width:140px;
+}
+table.user_role tbody tr td{
+    vertical-align: middle;
+    text-align: center;
+}
+table.user_role tbody tr td a.role_del{
+    display: inline-block;
+    width:24px;
+    height: 24px;
+    margin: 0 auto;
+    background: url("/images/role_del.png") no-repeat left top;
+}
+table.user_role thead tr th a.role_add{
+    display: inline-block;
+    width:24px;
+    height: 24px;
+    margin: 0 auto;
+    background: url("/images/role_add.png") no-repeat left top;
+}
+span.is_checked{
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    background: url("/images/is_checked.png") no-repeat left top;
+}
+span.is_unchecked{
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    background: url("/images/is_unchecked.png") no-repeat left top;
+}
+table.user_role_assign{
+    border: 1px solid #e0e2e1;
+}
+table.user_role_assign thead th{
+    background: #e0e2e1;
+}
+table.user_role_assign tbody tr{
+    height: 25px;
+    line-height: 25px;
+    background: #f0f1f2;
+}
+table.user_role_assign tbody tr td{
+    padding: 5px;
+}
+table.user_role_assign tbody tr td a.checked_on{
+   width: 16px;
+   height: 16px;
+   background: url("/images/checked.png") no-repeat left top;
+   display: inline-block;
+}
+table.user_role_assign tbody tr td a.checked_off{
+   width: 16px;
+   height: 16px;
+   background: url("/images/unchecked.png") no-repeat left top;
+   display: inline-block;
+}
+
+
+table.user_role_assign tr td span.loading{
+    background: url("/images/loading_user.gif") no-repeat left 1px;
+    height: 16px;
+    line-height: 16px;
+    width: 16px;
+    display: none;
+}
+
+table.user_role_assign tr th a.sw{
+    background: url("/images/switch.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    cursor: pointer;
+    display: inline-block;
+    height: 20px;
+    width: 55px;
+}
+table.user_role_assign tr th a.off{
+   background-position: 0 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+table.user_screen{
+    width: 100%;
+    border: none;
+}
+table.user_screen tr{
+    height: 25px;
+    line-height: 25px;
+}
+table.user_screen tr{
+    background: #f6f9fc;
+    border-bottom: 1px solid #d3d3d3;
+}
+table.user_screen tr:last-child{
+    background: #f6f9fc;
+    border-bottom: none;
+}
+table.user_screen thead th{
+    text-align: center;
+    background: #e0e2e1;
+}
+table.user_screen tr th{
+    height: 30px;
+    line-height: 30px;
+}
+table.user_screen tr th span.loading{
+    background: url("/images/loading_user.gif") no-repeat left 1px;
+    height: 16px;
+    line-height: 16px;
+    width: 16px;
+    display: inline-block;
+}

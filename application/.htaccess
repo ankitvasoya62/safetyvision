@@ -1,0 +1,17 @@
+Options +FollowSymlinks
+
+php_value date.timezone Europe/Oslo
+
+DirectoryIndex index.php
+
+RewriteEngine on 
+RewriteCond	%{REQUEST_FILENAME}	!-f
+RewriteCond	%{REQUEST_FILENAME}	!-d
+RewriteCond	$1	!^(index\.php|robots\.txt|favicon\.ico|Sitemap\.xml)
+RewriteRule	^(.*)$	index.php/$1 [L] 
+
+# MIME types for Video
+AddType video/mp4 mp4 m4v f4v f4p
+AddType video/ogg ogv
+AddType video/webm webm
+AddType video/x-flv flv

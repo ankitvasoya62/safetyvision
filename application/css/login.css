@@ -1,0 +1,73 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+ul{
+    list-style: none;
+}
+@font-face {
+    font-family: "MaxTFReg";
+    src: url("/fonts/SB1_MaxTFReg.ttf") format("truetype");
+}
+@font-face {
+    font-family: "MaxTFSemBol";
+    src: url("/fonts/SB1_MaxTFSemBol.ttf") format("truetype");
+}
+body{
+    font-size: 14px;
+    font-family: MaxTFReg;
+    background-color: #dae0e3;
+    line-height: 2em;
+}
+.clear{
+    both:clear;
+}
+.blank{
+    width: 100%;
+    height: 6px;
+}
+header{
+    background:#272728;
+    height: 72px;
+}
+header #logo {
+    height:72px;
+}
+header #logo h2{
+    margin: 0;
+    text-indent: 1em;
+    height:72px;
+    color: #fff;
+    line-height: 72px;
+}
+section#wrap{
+    width: 100%;
+}
+section#wrap .form{
+    width: 422px;
+    height: 301px;
+    background: #fff;
+    background: url('../images/login.png') no-repeat left top;
+    margin: 0 auto;
+}
+#login-form{
+    width:60%;
+    margin: 0 auto;
+    padding-top:8px;
+}
+#login-form .form-group{
+    margin: 0;
+}
+#login-form .form-group:first-child{
+    margin: 15px 0 0 0;
+}
+footer{
+    height: 32px;
+    margin: 2em;
+}
+footer p{
+    text-align: center;
+    line-height: 32px;
+    height: 32px;
+    color: #000;
+}
