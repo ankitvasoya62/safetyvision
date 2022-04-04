@@ -6,6 +6,9 @@ $yii=dirname(__FILE__).'/../framework/yii.php';
 if (_WEBHOST == 'wwwny.safetyvision.no') {
     defined('YII_DEBUG') or define('YII_DEBUG',false);
     define('DEVELOP_MODE','live');
+} elseif (_WEBHOST == '52.232.74.234') {
+    defined('YII_DEBUG') or define('YII_DEBUG',false);
+    define('DEVELOP_MODE','live');
 } elseif (_WEBHOST == 'dev.safetyvision.no') {
     defined('YII_DEBUG') or define('YII_DEBUG',true);
     defined('YII_TRACE_LEVEL') or define('YII_TRACE_LEVEL',3);
