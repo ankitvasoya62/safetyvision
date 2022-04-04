@@ -159,8 +159,6 @@ class SpotsController extends Controller {
             if (isset($spot['token'])) {
                 $param = $this->__getKey($spot['token']);
                 if ($param) {
-                    print_r($param);
-                    exit();
                     $model->owner = trim($spot['owner']);
                     $model->title = $param['title'];
                     $model->user_id = 1;
