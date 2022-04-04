@@ -105,8 +105,8 @@ class RoleAssign extends CActiveRecord {
                      $role->stime_text = $val['stime_text'];
                 }
                 if($val['etime_text'] != ""){
-                     $role->stime = strtotime($val['etime_text']);
-                     $role->stime_text = $val['etime_text'];
+                     $role->etime = strtotime($val['etime_text']);
+                     $role->etime_text = $val['etime_text'];
                 }
                 if($key == 0){
                     $role->default_role = 1;

@@ -275,7 +275,7 @@
                                             if (!empty($screens)) {
                                                 foreach ($screens as $val) {
                                                     ?>
-                                                    <li><span class="screen-checked-left"><?php echo $val['name']; ?></span><span class="screen-checked-right"><a href="javascript:void(0);" class="target checked_on" data-screen-id="<?php echo $val['id']; ?>"></a></span></li>
+                                                    <li><span class="screen-checked-left"><?php echo $val['name']; ?></span><span class="screen-checked-right"><a href="javascript:void(0);" class="target checked_on" data-screen-id="<?php echo $val['screen_id']; ?>"></a></span></li>
                                                     <?php
                                                 }
                                             } else {

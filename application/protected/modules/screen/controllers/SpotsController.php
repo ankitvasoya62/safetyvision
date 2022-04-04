@@ -75,6 +75,7 @@ class SpotsController extends Controller {
     }
 
     public function actionUpdate() {
+    
         $id = Yii::app()->request->getParam('id', 0);
         $step = Yii::app()->request->getParam('step', 0);
         $model = Spots::model()->findByPk($id);
@@ -158,6 +159,8 @@ class SpotsController extends Controller {
             if (isset($spot['token'])) {
                 $param = $this->__getKey($spot['token']);
                 if ($param) {
+                    print_r($param);
+                    exit();
                     $model->owner = trim($spot['owner']);
                     $model->title = $param['title'];
                     $model->user_id = 1;
@@ -169,6 +172,12 @@ class SpotsController extends Controller {
                     }
                     if (!empty($spot['stop_date'])) {
                         $model->stop_date = strtotime($spot['stop_date']);
+                    }
+                    if (!empty($spot['start_hh'])) {
+                        $model->start_hh = $spot['start_hh'];
+                    }
+                    if (!empty($spot['stop_hh'])) {
+                        $model->stop_hh = $spot['stop_hh'];
                     }
                     $model->screens = implode(',', $spot['screen_id']);
                     $model->created = time();
@@ -346,9 +355,13 @@ class SpotsController extends Controller {
             $extension = pathinfo($cache['video'], PATHINFO_EXTENSION);
             $newextension = "mp4";
             $newfilename = basename($cache['video'], $extension).$newextension;
-            $uploadPath = Yii::getPathOfAlias('webroot') . '/upload/video/';
+            $uploadPath = Yii::getPathOfAlias('webroot') . '/upload/video/' . $cache['filepath'];
             $downloadPath = Yii::getPathOfAlias('webroot') . '/download/' . $token . "." . $newextension;
-            copy($uploadPath . $cache['filepath'] , $downloadPath . $newfilename);
+
+            shell_exec("ffmpeg -i $uploadPath $downloadPath");
+            // shell_exec("ffmpeg -i $uploadPath -c:a copy -c:v libx264 -preset superfast -profile:v baseline $downloadPath");
+            // exit();
+            // copy($uploadPath . $cache['filepath'] , $downloadPath . $downloadPath);
             $is_lock_request_key = 'is_locked' . $token;
             Yii::app()->memcache->delete($is_lock_request_key);
             $this->__resetKey($token, array('url' => '/download/' . $token . '.mp4', 'filesize' => 0));

@@ -41,28 +41,40 @@ class ScreenController extends Controller {
         $criteria->compare('is_deleted', 0);
         $criteria->order  = 'screen.name ASC';
         $screen = Screen::model()->with(array('customer'))->findAll($criteria);
+        $userId = Yii::app()->user->id;
+        $userScreens = $screens = Screen::model()->getUserScreens($userId);
+        $userActiveScreens = [];
+
+        foreach ($userScreens as $data) {
+            if ($data['is_on'] == 1) {
+                array_push($userActiveScreens, $data['screen_id']);
+            }
+        }
+       
         if (!empty($screen)) {
             foreach ($screen as $val) {
-                $open = FALSE;
-                $screen_ids = Yii::app()->memcache->get('screen_1');
-                if ($screen_ids) {
-                    $screen_id = explode(',', $screen_ids);
-                    if (in_array($val['screen_id'], $screen_id)) {
-                        $open = TRUE;
+                if (in_array($val['screen_id'], $userActiveScreens)) {
+                    $open = FALSE;
+                    $screen_ids = Yii::app()->memcache->get('screen_1');
+                    if ($screen_ids) {
+                        $screen_id = explode(',', $screen_ids);
+                        if (in_array($val['screen_id'], $screen_id)) {
+                            $open = TRUE;
+                        }
                     }
-                }
-                $result[] = array(
-                    'screen_id' => $val['screen_id'],
-                    'name' => $val['name'],
-                    'customer' => $val['customer']['name'],
-                    'customer_id' => $val['customer']['id'],
-                    'width' => (int) $val['width'],
-                    'height' => (int) $val['height'],
-                    'ratio' => $val['ratio'],
-                    'secret' => $val['secret'],
-                    'is_open' => $open,
-                    'spots'=> SpotsPos::model()->getPlaylistByScreenId($val['screen_id']),
-                );
+                    $result[] = array(
+                        'screen_id' => $val['screen_id'],
+                        'name' => $val['name'],
+                        'customer' => $val['customer']['name'],
+                        'customer_id' => $val['customer']['id'],
+                        'width' => (int) $val['width'],
+                        'height' => (int) $val['height'],
+                        'ratio' => $val['ratio'],
+                        'secret' => $val['secret'],
+                        'is_open' => $open,
+                        'spots'=> SpotsPos::model()->getPlaylistByScreenId($val['screen_id']),
+                    );
+                } 
             }
             Yii::app()->memcache->delete('screen_1');
         }

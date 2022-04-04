@@ -15,16 +15,9 @@ return array(
             ),
             'urlSuffix' => '.html',
         ),
-        'db' => array(
-            'connectionString' => 'mysql:host=localhost;dbname=safetyvision',
-            'emulatePrepare' => true,
-            'username' => 'root',
-            'password' => '!2wsxcder#ere',
-            'charset' => 'utf8',
-            'tablePrefix' => 'sv_'
-        ),
+		  // set the memcache for onlievision
         'memcache' => array(
-            'class' => 'system.caching.CMemCache',
+            'class' => 'CMemCache',
             'servers' => array(
                 array(
                     'host' => '127.0.0.1',
@@ -33,6 +26,32 @@ return array(
                 ),
             ),
         ),
+        'db' => array(
+            'connectionString' => 'mysql:host=localhost;dbname=safetyvision',
+            'emulatePrepare' => true,
+            'username' => 'root',
+            'password' => 'S@fetyV!$$!on@@',
+            'charset' => 'utf8',
+            'tablePrefix' => 'sv_'
+        ),
+        /*'memcache' => array(
+            'class' => 'system.caching.CMemCache',
+            'servers' => array(
+                array(
+                    'host' => '127.0.0.1',
+                    'port' => 11211,
+                    'weight' => 100,
+                ),
+            ),
+        ),*/
+        'cache' => array(
+            'class' => 'system.caching.CMemCache',
+            'servers' => array(
+                array('host' => '127.0.0.1', 'port' => 11211, 'weight' => 60)
+            )
+        ),
+        'ffmpeg' => ['class' => 'system.base.Ffmpeg'],
+
         'errorHandler' => array(
             'errorAction' => 'site/error',
         ),

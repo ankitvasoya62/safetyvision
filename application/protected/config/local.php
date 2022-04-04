@@ -28,10 +28,10 @@ return array(
             ),
         ),
         'db' => array(
-            'connectionString' => 'mysql:host=localhost;dbname=_safetyvision',
+            'connectionString' => 'mysql:host=localhost;dbname=safetyvision',
             'emulatePrepare' => true,
             'username' => 'root',
-            'password' => '',
+            'password' => 'S@fetyV!$$!on@@',
             'charset' => 'utf8',
             'tablePrefix' => 'sv_'
         ),

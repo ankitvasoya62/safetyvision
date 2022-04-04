@@ -109,7 +109,7 @@ class User extends CActiveRecord {
         $result = array('user_id' => $user_id, 'access' => array());
         
         if ($user_id != 0) {
-            $SQL = "SELECT * FROM `sv_role_assign` ra LEFT JOIN `sv_role_operate` ro ON ra.role_id = ro.role_id WHERE `user_id` = {$user_id} AND `stime` <= NOW() AND (`etime` >= NOW() OR `etime` = 0) AND `default_role` = 1";
+            $SQL = "SELECT * FROM `sv_role_assign` ra LEFT JOIN `sv_role_operate` ro ON ra.role_id = ro.role_id WHERE `user_id` = {$user_id} AND `stime` <= UNIX_TIMESTAMP(NOW()) AND (`etime` >= UNIX_TIMESTAMP(NOW()) OR `etime` = 0) AND `default_role` = 1";
 
             $access = Yii::app()->db->createCommand($SQL)->queryAll();
             

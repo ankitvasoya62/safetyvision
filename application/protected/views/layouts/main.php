@@ -52,7 +52,8 @@
             </div>
         </div>
         <?php
-        $init = array('menu.customer' => 0, 'menu.screen' => 0, 'menu.archive' => 0, 'menu.administrator' => 0);
+        $init = array('menu.customer' => 0, 'menu.screen' => 0, 'menu.archive' => 0, 'menu.administrator' => 0
+    , 'menu.administrator.roles' => 0);
         $access = AuthManage::checkAccess($init);
         ?>
         <div id="main">
@@ -71,6 +72,9 @@
                     <?php } ?>
                     <?php if ($access['menu.administrator']) { ?>
                         <li class="menu-user"><a href="/rbms"><?php echo Yii::t('lang', ' Administrator'); ?></a></li>
+                    <?php } ?>
+                    <?php if ($access['menu.administrator.roles']) { ?>
+                        <li class="menu-logout"><?php echo CHtml::link(Yii::t('lang', 'Role'), array('/rbms/roles/index')); ?></li>
                     <?php } ?>
                     <li class="menu-logout"><?php echo CHtml::link(Yii::t('lang', 'Log out'), array('/site/logout')); ?></li>
                 </ul>
