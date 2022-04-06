@@ -11,7 +11,7 @@ var Video = function () {
         $("#upload-file").bootstrapFileInput();
         me.upload();
         me.spot();
-        $("#loaded-video video").attr("src", $("#loaded-video").attr("data_src")).show();
+        // $("#loaded-video video").attr("src", $("#loaded-video").attr("data_src")).show();
         $('#spot_start_hh').timepicker({ timeFormat: 'HH:mm',dropdown:true});
         $('#spot_stop_hh').timepicker({timeFormat: 'HH:mm',dropdown:true});
     };
@@ -36,26 +36,26 @@ var Video = function () {
                             $("#progress .progress_speed").css('width', '0%');
                             $("#progressText").html("");
                             me.CLOCK = setInterval(function () {
-                                $("#progress-wrap").css('display', 'block');
-                                $.ajax({
-                                    type: "GET",
-                                    url: "/progress",
-                                    dataType: "json",
-                                    headers: {
-                                        'X-Progress-ID': $uuid
-                                    },
-                                    success: function (data) {
-                                        if (data.state == 'done') {
-                                            window.clearInterval(me.CLOCK);
-                                        } else if (data.state == 'uploading') {
-                                            var percentage = Math.floor(100 * parseInt(data.received) / parseInt(data.size));
-                                            $("#progress .progress_speed").css('width', percentage + '%');
-                                            $("#progressText").html(percentage + '%&nbsp;' + me.formatSize(data.received) + '/' + me.formatSize(data.size));
-                                        } else {
-                                            $("#progressText").html(data.state);
-                                        }
-                                    }
-                                });
+                                // $("#progress-wrap").css('display', 'block');
+                                // $.ajax({
+                                //     type: "GET",
+                                //     url: "/progress",
+                                //     dataType: "json",
+                                //     headers: {
+                                //         'X-Progress-ID': $uuid
+                                //     },
+                                //     success: function (data) {
+                                //         if (data.state == 'done') {
+                                //             window.clearInterval(me.CLOCK);
+                                //         } else if (data.state == 'uploading') {
+                                //             var percentage = Math.floor(100 * parseInt(data.received) / parseInt(data.size));
+                                //             $("#progress .progress_speed").css('width', percentage + '%');
+                                //             $("#progressText").html(percentage + '%&nbsp;' + me.formatSize(data.received) + '/' + me.formatSize(data.size));
+                                //         } else {
+                                //             $("#progressText").html(data.state);
+                                //         }
+                                //     }
+                                // });
                             }, 1000);
                         }
                     },
@@ -256,8 +256,8 @@ var Video = function () {
                 $owner = $.trim($("#spot-owner").val());
                 $start_date = $("#spot-start-date").val();
                 $stop_date = $("#spot-stop-date").val();
-                $start_hh = $("#spot-start-hh").val();
-                $stop_hh = $("#spot-stop-hh").val();
+                $start_hh = $("#spot_start_hh").val();
+                $stop_hh = $("#spot_stop_hh").val();
                 $("#screen-panel a.checked_on").each(function () {
                     $screen_ids.push($(this).attr("data-screen-id"));
                 });

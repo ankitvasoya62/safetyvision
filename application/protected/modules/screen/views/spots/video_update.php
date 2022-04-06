@@ -230,7 +230,7 @@
                         <tr><td colspan="2">&nbsp;</td></tr>
                         <tr>
                             <td style="height:16px; line-height: 16px;">
-                                <label class="control-label"><?php echo Yii::t('lang', 'Selected screens'); ?>:</label>
+                                <label for="spot-stop-date" class="control-label"><?php echo Yii::t('lang', 'Selected screens'); ?>:</label>
                             </td>
                             <td>
                                 <div style="height:16px; line-height: 16px;">

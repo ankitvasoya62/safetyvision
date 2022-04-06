@@ -26,6 +26,11 @@ class ScreenController extends Controller {
             }
             if ($screen->validate()) {
                 if ($screen->save()) {
+                    $userScreen = new UserScreens();
+                    $userScreen->user_id = Yii::app()->user->id;
+                    $userScreen->screen_id = $screen->screen_id;
+                    $userScreen->is_on = 1;
+                    $userScreen->save();
                     $result = array('status' => 'ok');
                 }
             }
@@ -42,7 +47,7 @@ class ScreenController extends Controller {
         $criteria->order  = 'screen.name ASC';
         $screen = Screen::model()->with(array('customer'))->findAll($criteria);
         $userId = Yii::app()->user->id;
-        $userScreens = $screens = Screen::model()->getUserScreens($userId);
+        $userScreens = Screen::model()->getUserScreens($userId);
         $userActiveScreens = [];
 
         foreach ($userScreens as $data) {

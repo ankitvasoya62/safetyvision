@@ -83,7 +83,8 @@ class SpotsPos extends CActiveRecord {
                 foreach ($spots as $val) {
                     $resource = json_decode($val['resource'], true);
                     $val['image'] = $resource['image'];
-                    // $val['cmd'] = $this->__getCmd($screen_id, $val['sid']);
+                    $val['time_days'] = $val['start_hh'] . " - " .  $val['stop_hh'];
+                    $val['cmd'] = $this->__getCmd($screen_id, $val['sid']);
                     $val['video'] = $resource['video'];
                     $status = VSCommon::checkSpotStatus($val['start_date'], $val['stop_date'], $val['start_hh'], $val['stop_hh']);
                     if($val['pc'] == 'y'){

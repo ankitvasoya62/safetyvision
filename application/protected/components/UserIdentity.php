@@ -21,7 +21,9 @@ class UserIdentity extends CUserIdentity {
     public function authenticate() {
         $user = User::model()->find("email='{$this->username}'");
         if (!empty($user)) {
-            if ($user->password != md5($this->password)) {
+            if ($user->expires < time()) {
+                $this->errorCode = self::ERROR_USER_EXPIRES;
+            }else if ($user->password != md5($this->password)) {
                 $this->errorCode = self::ERROR_PASSWORD_INVALID;
             } else {
                 $this->errorCode = self::ERROR_NONE;

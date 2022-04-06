@@ -75,7 +75,6 @@ class SpotsController extends Controller {
     }
 
     public function actionUpdate() {
-    
         $id = Yii::app()->request->getParam('id', 0);
         $step = Yii::app()->request->getParam('step', 0);
         $model = Spots::model()->findByPk($id);
@@ -104,13 +103,20 @@ class SpotsController extends Controller {
     public function actionSave() {
         $spot_id = Yii::app()->request->getParam('spot_id', 0);
         $result = array('status' => FALSE);
-        if ($spot_id) {
+        if ($spot_id !== 0) {
             $model = Spots::model()->findByPk($spot_id);
             
             $spot = Yii::app()->request->getParam('spot');
             if (isset($spot['token'])) {
                 $param = $this->__getKey($spot['token']);
                 if ($param) {
+                    if (array_key_exists('src', $param) != 1) {
+                        $resourceData = json_decode($model->resource);
+                        $src = $resourceData->origin_image_file;
+                        $name = $resourceData->origin_image_name;
+                        $param['src'] = $src;
+                        $param['name'] = $name;
+                    }
                     $model->owner = trim($spot['owner']);
                     $model->title = $param['title'];
                     $model->user_id = 1;
@@ -148,7 +154,7 @@ class SpotsController extends Controller {
                     if ($model->update()) {
                         Yii::app()->memcache->set('screen_1', $model->screens);
                         Yii::app()->memcache->delete($spot['token']);
-                        SpotsPos::model()->addPlaylist($model->id, $model->screens);
+                        // SpotsPos::model()->addPlaylist($model->id, $model->screens);
                         $result = array('status' => TRUE);
                     }
                 }
@@ -160,9 +166,11 @@ class SpotsController extends Controller {
                 $param = $this->__getKey($spot['token']);
                 if ($param) {
                     $model->owner = trim($spot['owner']);
+                    $model->additional_owner = trim($spot['owner']);
                     $model->title = $param['title'];
                     $model->user_id = 1;
                     $model->customer_id = 1;
+                    $model->type = $param['extension'];
                     if (!empty($spot['start_date'])) {
                         $model->start_date = strtotime($spot['start_date']);
                     } else {

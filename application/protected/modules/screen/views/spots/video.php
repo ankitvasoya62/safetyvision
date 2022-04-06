@@ -1,7 +1,7 @@
 <link  href="/css/jquery-ui.min.css" rel="stylesheet">
+<link  href="/css/jquery.timepicker.min.css" rel="stylesheet"/>
 <script src="/js/bootstrap.file-input.js"></script>
 <script src="/js/jquery.form.js"></script>
-<script src="/js/jquery-ui.min.js"></script>
 <script src="/js/jquery-ui.min.js"></script>
 <script src="/js/jquery.timepicker.min.js"></script>
 <div id="ctoolbar" class="box"></div>

@@ -22,7 +22,7 @@
             <div id="logo"></div>
             <div id="user_info">
                 <div class="user_info_top">
-                    <span class="span_left"><a href="/rbms/user/profile/id/<?php echo Yii::app()->user->id; ?>"><?php echo Yii::app()->user->name; ?></a></span>
+                    <span class="span_left"><a class="custom-user-email" href="/rbms/user/profile/id/<?php echo Yii::app()->user->id; ?>"><?php echo Yii::app()->user->name; ?></a></span>
                     <span class="span_right"><?php echo Yii::t('lang', 'Currently logged in as'); ?>: <?php echo (new RoleAssign)->getRoleAssignName(Yii::app()->user->id)[0]['name'] ?></span>
                 </div>
                 <div class="user_info_bottom">
@@ -74,7 +74,7 @@
                         <li class="menu-user"><a href="/rbms"><?php echo Yii::t('lang', ' Administrator'); ?></a></li>
                     <?php } ?>
                     <?php if ($access['menu.administrator.roles']) { ?>
-                        <li class="menu-logout"><?php echo CHtml::link(Yii::t('lang', 'Role'), array('/rbms/roles/index')); ?></li>
+                        <li class="menu-user"><?php echo CHtml::link(Yii::t('lang', 'Role'), array('/rbms/roles/index')); ?></li>
                     <?php } ?>
                     <li class="menu-logout"><?php echo CHtml::link(Yii::t('lang', 'Log out'), array('/site/logout')); ?></li>
                 </ul>
