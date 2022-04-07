@@ -151,7 +151,7 @@
                             <td colspan="2">
                                 <div id="video-pane">
                                     <div id="loading-status"></div>
-                                    <div id="loaded-video" data_src="">
+                                    <div id="loaded-video" data_src="<?php echo $res['video']; ?>">
                                         <video src="<?php echo $res['video']; ?>" autoplay width="100%" type="video/mp4" controls="" autoplay></video>
                                     </div>
                                 </div>
@@ -188,7 +188,7 @@
                                 <label for="spot-owner" class="control-label"><?php echo Yii::t('lang', 'Additional Spot Owner'); ?>:</label>
                             </td>
                             <td>
-                                <input class="form-control" type="text" name="name" id="spot-owner"/>
+                                <input value="<?php echo $model['additional_owner']; ?>" class="form-control" type="text" name="name" id="spot-owner"/>
                             </td>
                         </tr>
                         <tr><td colspan="2">&nbsp;</td></tr>
@@ -197,7 +197,7 @@
                                 <label for="spot-start-date" class="control-label"><?php echo Yii::t('lang', 'From date'); ?>:</label>
                             </td>
                             <td>
-                                <input class="form-control datepicker" type="text" id="spot-start-date" value="<?php echo date("D.d.m.Y"); ?>"/>
+                                <input class="form-control datepicker" type="text" id="spot-start-date" value="<?php echo date("D.d.m.Y", substr($model['start_date'], 0, 10)); ?>"/>
                             </td>
                         </tr>
                         <tr><td colspan="2">&nbsp;</td></tr>
@@ -206,7 +206,7 @@
                                 <label for="spot-stop-date" class="control-label"><?php echo Yii::t('lang', 'To date and including'); ?>:</label>
                             </td>
                             <td>
-                                <input class="form-control datepicker" type="text" id="spot-stop-date"/>
+                                <input class="form-control datepicker" type="text" id="spot-stop-date" value="<?php echo date("D.d.m.Y", substr($model['stop_date'], 0, 10)); ?>"/>
                             </td>
                         </tr>
                         <tr><td colspan="2">&nbsp;</td></tr>
@@ -215,7 +215,7 @@
                                 <label for="spot_start_hh" class="control-label"><?php echo Yii::t('lang', 'Start Time'); ?>:</label>
                             </td>
                             <td>
-                                <input class="form-control" type="text" id="spot_start_hh"/>
+                                <input class="form-control" type="text" id="spot_start_hh" value="<?php echo $model['start_hh']; ?>"/>
                             </td>
                         </tr>
                         <tr><td colspan="2">&nbsp;</td></tr>
@@ -224,7 +224,7 @@
                                 <label for="spot_stop_hh" class="control-label"><?php echo Yii::t('lang', 'Stop Time'); ?>:</label>
                             </td>
                             <td>
-                                <input class="form-control" type="text" id="spot_stop_hh"/>
+                                <input class="form-control" type="text" id="spot_stop_hh" value="<?php echo $model['stop_hh']; ?>"/>
                             </td>
                         </tr>
                         <tr><td colspan="2">&nbsp;</td></tr>

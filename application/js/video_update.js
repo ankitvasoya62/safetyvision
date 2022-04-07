@@ -11,7 +11,9 @@ var Video = function () {
         $("#upload-file").bootstrapFileInput();
         me.upload();
         me.spot();
-        // $("#loaded-video video").attr("src", $("#loaded-video").attr("data_src")).show();
+        $("#loaded-video video").attr("src", $("#loaded-video").attr("data_src")).show();
+        $("#submit-button").removeAttr("disabled");
+        this.submit();
         $('#spot_start_hh').timepicker({ timeFormat: 'HH:mm',dropdown:true});
         $('#spot_stop_hh').timepicker({timeFormat: 'HH:mm',dropdown:true});
     };

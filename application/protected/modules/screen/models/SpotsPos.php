@@ -86,6 +86,7 @@ class SpotsPos extends CActiveRecord {
                     $val['time_days'] = $val['start_hh'] . " - " .  $val['stop_hh'];
                     $val['cmd'] = $this->__getCmd($screen_id, $val['sid']);
                     $val['video'] = $resource['video'];
+                    $val['filesize'] = $this->formatSizeUnits($val['filesize']);
                     $status = VSCommon::checkSpotStatus($val['start_date'], $val['stop_date'], $val['start_hh'], $val['stop_hh']);
                     if($val['pc'] == 'y'){
                         if($status == 2){
@@ -120,6 +121,25 @@ class SpotsPos extends CActiveRecord {
          }else{
              return 'pause';
          }
+    }
+
+    public function formatSizeUnits($bytes)
+    {
+        if ($bytes >= 1073741824) {
+            $bytes = number_format($bytes / 1073741824, 2) . ' GB';
+        } elseif ($bytes >= 1048576) {
+            $bytes = number_format($bytes / 1048576, 2) . ' MB';
+        } elseif ($bytes >= 1024) {
+            $bytes = number_format($bytes / 1024, 2) . ' KB';
+        } elseif ($bytes > 1) {
+            $bytes = $bytes . ' bytes';
+        } elseif ($bytes == 1) {
+            $bytes = $bytes . ' byte';
+        } else {
+            $bytes = '0 bytes';
+        }
+
+        return $bytes;
     }
     
 }

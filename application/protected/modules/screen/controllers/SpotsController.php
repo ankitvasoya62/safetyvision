@@ -115,9 +115,26 @@ class SpotsController extends Controller {
                         $src = $resourceData->origin_image_file;
                         $name = $resourceData->origin_image_name;
                         $param['src'] = $src;
-                        $param['name'] = $name;
+                        $param['name'] = $name;                        
+                    }  
+                    if (array_key_exists('filesize', $param) != 1) {
+                        $param['filesize'] = $model['filesize'];
                     }
+                    if (array_key_exists('video', $param) != 1) {
+                        $param['video'] = $resourceData->video;
+                    }
+                    if (array_key_exists('videoName', $param) != 1) {
+                        $param['videoName'] = $resourceData->origin_video_name;
+                    }
+                    if (array_key_exists('extension', $param) != 1) {
+                        $param['extension'] = $resourceData->origin_video_extension;
+                    }
+                    if (array_key_exists('url', $param) != 1) {
+                        $param['url'] = $resourceData->video;
+                    }
+
                     $model->owner = trim($spot['owner']);
+                    $model->additional_owner = trim($spot['owner']);
                     $model->title = $param['title'];
                     $model->user_id = 1;
                     $model->customer_id = 1;
@@ -277,7 +294,8 @@ class SpotsController extends Controller {
             $name = $token . "." . $file->getExtensionName();
             if(strtolower($file->getExtensionName()) == 'mp4'){
                  $file->saveAs('download/' . $token . '.mp4');
-                 $this->__resetKey($token, array('url' => '/download/' . $token . '.mp4', 'videoName' => $file->getName(),'filesize' => 0, 'video' => '/download/' . $token . '.mp4', 'extension' => $file->getExtensionName()));
+                 $filesize = filesize('download/' . $token . '.mp4');
+                 $this->__resetKey($token, array('url' => '/download/' . $token . '.mp4', 'videoName' => $file->getName(),'filesize' => $filesize, 'video' => '/download/' . $token . '.mp4', 'extension' => $file->getExtensionName()));
                  echo json_encode(array('src' => '/upload/' . $source . '/' . $name));
             }else{
                 $file->saveAs('upload/' . $source . '/' . $name);
