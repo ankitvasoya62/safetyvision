@@ -136,7 +136,7 @@
                             <th style="width:60px;"><button type="button" class="btn btn-info" id="upload"><span class="glyphicon glyphicon-upload"></span>Upload</button></th>
                         </tr>
                         <tr>
-                            <td colspan="2">&nbsp;</td>
+                            <td colspan="2"><span class="loading-span">Please wait while video file is uploading...</span></td>
                         </tr>
                         <tr>
                             <td colspan="2" id="upload_status">

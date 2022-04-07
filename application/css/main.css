@@ -1467,3 +1467,7 @@ div.delete_pos{padding:20px 0;font-size:18px;color:red;display: none;}
 .custom-user-email{
     margin-left: 56% !important;
 }
+span.loading-span {
+    font-weight: bold; 
+    color:red;
+}

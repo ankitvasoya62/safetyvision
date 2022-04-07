@@ -1,6 +1,8 @@
 $(document).ready(function () {
     var video = new Video();
     video.init();
+    $('span.loading-span').hide();
+    $('#upload').prop('disabled', false);
 });
 
 var Video = function () {
@@ -21,6 +23,8 @@ var Video = function () {
     this.upload = function () {
         $("#upload").click(function () {
             if (me.checkType()) {
+                $('span.loading-span').show();
+                $('#upload').prop('disabled', true);
                 $("#progress-wrap").css('display', 'block');
                 $("#progress .progress_speed").css('width', '0%');
                 $token = $("#token").val();
@@ -109,6 +113,8 @@ var Video = function () {
                     window.clearInterval(Convert_Clock);
                     $("#loading-status").html('<img src="/images/loading.gif" />' + data.percent).hide();
                     $("#loaded-video video").attr("src", data.src).show();
+                    $('span.loading-span').hide();
+                    $('#upload').prop('disabled', false);
                     $("#submit-button").removeAttr("disabled");
                 } else {
                     $("#loaded-video video").hide();
